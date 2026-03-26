@@ -2,35 +2,36 @@ import { Link } from 'react-router-dom';
 import favoriteIcon from '../assets/icons/ic_baseline-favorite-border.png';
 import logoSignIcon from '../assets/icons/logo-sign.png';
 import notificationIcon from '../assets/icons/mi_notification.png';
+import styles from './AppHeader.module.scss';
 
 export const AppHeader = () => {
   return (
-    <header className="header">
-      <div className="header__container container">
-        <Link className="logo" to="/" aria-label="На главную">
-          <span className="logo__icon" aria-hidden="true">
-            <img className="logo__icon-image" src={logoSignIcon} alt="" />
+    <header className={styles.header}>
+      <div className={`container ${styles.container}`}>
+        <Link className={styles.logo} to="/" aria-label="На главную">
+          <span className={styles.logoIcon} aria-hidden="true">
+            <img className={styles.logoIconImage} src={logoSignIcon} alt="" />
           </span>
-          <span className="logo__text">
-            <span className="logo__text-light">at-</span>
-            <span className="logo__text-strong">work</span>
+          <span className={styles.logoText}>
+            <span className={styles.logoTextLight}>at-</span>
+            <span className={styles.logoTextStrong}>work</span>
           </span>
         </Link>
 
-        <div className="header__actions">
-          <button className="header__icon-button" type="button" aria-label="Избранное">
-            <img className="header__icon-image" src={favoriteIcon} alt="" aria-hidden="true" />
+        <div className={styles.actions}>
+          <button className={styles.iconButton} type="button" aria-label="Избранное">
+            <img className={styles.iconImage} src={favoriteIcon} alt="" aria-hidden="true" />
           </button>
-          <button className="header__icon-button" type="button" aria-label="Уведомления">
-            <img className="header__icon-image" src={notificationIcon} alt="" aria-hidden="true" />
+          <button className={styles.iconButton} type="button" aria-label="Уведомления">
+            <img className={styles.iconImage} src={notificationIcon} alt="" aria-hidden="true" />
           </button>
-          <div className="header__profile">
+          <div className={styles.profile}>
             <img
-              className="header__avatar"
+              className={styles.avatar}
               src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80"
               alt="Иван"
             />
-            <span className="header__name">Ivan1234</span>
+            <span className={styles.name}>Ivan1234</span>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import successCheckIcon from '../assets/icons/success-check-icon.png';
+import styles from './SuccessModal.module.scss';
 
 interface SuccessModalProps {
   isOpen: boolean;
@@ -20,9 +21,9 @@ export const SuccessModal = ({ isOpen, onClose }: SuccessModalProps) => {
     return null;
   }
 
-  return (
+    return (
     <div
-      className="success-modal"
+      className={styles.overlay}
       role="presentation"
       onClick={(event) => {
         if (event.target === event.currentTarget) {
@@ -30,14 +31,14 @@ export const SuccessModal = ({ isOpen, onClose }: SuccessModalProps) => {
         }
       }}
     >
-      <div className="success-modal__card" role="dialog" aria-modal="true" aria-label="Изменения сохранены">
-        <button className="success-modal__close" type="button" onClick={onClose} aria-label="Закрыть">
+      <div className={styles.card} role="dialog" aria-modal="true" aria-label="Изменения сохранены">
+        <button className={styles.close} type="button" onClick={onClose} aria-label="Закрыть">
           ×
         </button>
-        <div className="success-modal__icon" aria-hidden="true">
-          <img className="success-modal__icon-image" src={successCheckIcon} alt="" />
+        <div className={styles.icon} aria-hidden="true">
+          <img className={styles.iconImage} src={successCheckIcon} alt="" />
         </div>
-        <p className="success-modal__text">Изменения сохранены!</p>
+        <p className={styles.text}>Изменения сохранены!</p>
       </div>
     </div>
   );

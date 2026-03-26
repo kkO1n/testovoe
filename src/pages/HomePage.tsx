@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Loader } from "../components/Loader";
 import { UserCard } from "../components/UserCard";
+import styles from "./HomePage.module.scss";
 import { useHomeUsersModel } from "./home/model/useHomeUsersModel";
 import { useUsersActions } from "./home/model/useUsersActions";
 import { useUsersQuery } from "./home/model/useUsersQuery";
@@ -22,14 +23,14 @@ export const HomePage = () => {
   }
 
   return (
-    <div className="home container">
-      <section className="home__section">
-        <div className="home__title-wrap">
-          <h1 className="home__title">Активные</h1>
+    <div className={`container ${styles.home}`}>
+      <section className={styles.section}>
+        <div className={styles.titleWrap}>
+          <h1 className={styles.title}>Активные</h1>
         </div>
 
         {activeUsers.length > 0 ? (
-          <div className="home__cards">
+          <div className={styles.cards}>
             {activeUsers.map((user) => (
               <UserCard
                 key={user.id}
@@ -46,13 +47,13 @@ export const HomePage = () => {
         )}
       </section>
 
-      <section className="home__section home__section--archive">
-        <div className="home__title-wrap">
-          <h2 className="home__title">Архив</h2>
+      <section className={styles.section}>
+        <div className={styles.titleWrap}>
+          <h2 className={styles.title}>Архив</h2>
         </div>
 
         {archivedUsers.length > 0 ? (
-          <div className="home__cards home__cards--archive">
+          <div className={`${styles.cards} ${styles.cardsArchive}`}>
             {archivedUsers.map((user) => (
               <UserCard
                 key={user.id}

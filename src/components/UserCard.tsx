@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import type { UserCardModel } from "../types/user";
+import styles from "./UserCard.module.scss";
 
 interface UserCardProps {
   user: UserCardModel;
@@ -35,24 +36,23 @@ export const UserCard = ({
   }, []);
 
   const isArchived = user.archived;
+  const cardClassName = [styles.card, isArchived ? styles.archived : ""]
+    .join(" ")
+    .trim();
 
   return (
-    <article className={`user-card ${isArchived ? "user-card--archived" : ""}`}>
-      <img
-        className="user-card__avatar"
-        src={user.avatarUrl}
-        alt={user.username}
-      />
+    <article className={cardClassName}>
+      <img className={styles.avatar} src={user.avatarUrl} alt={user.username} />
 
-      <div className="user-card__content">
+      <div className={styles.content}>
         <div>
-          <div className="user-card__head">
-            <h3 className="user-card__username">{user.username}</h3>
+          <div className={styles.head}>
+            <h3 className={styles.username}>{user.username}</h3>
 
-            <div className="user-card__menu" ref={menuRef}>
+            <div className={styles.menu} ref={menuRef}>
               <button
                 type="button"
-                className="user-card__menu-trigger"
+                className={styles.menuTrigger}
                 aria-expanded={isMenuOpen}
                 aria-label="Открыть меню действий"
                 onClick={(event) => {
@@ -66,7 +66,7 @@ export const UserCard = ({
               </button>
 
               {isMenuOpen && (
-                <div className="user-card__menu-list">
+                <div className={styles.menuList}>
                   <button
                     type="button"
                     onClick={() => {
@@ -113,10 +113,10 @@ export const UserCard = ({
             </div>
           </div>
 
-          <p className="user-card__company">{user.companyName}</p>
+          <p className={styles.company}>{user.companyName}</p>
         </div>
 
-        <p className="user-card__city">{user.city}</p>
+        <p className={styles.city}>{user.city}</p>
       </div>
     </article>
   );
