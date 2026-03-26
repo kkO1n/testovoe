@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import successCheckIcon from '../assets/icons/success-check-icon.png';
 
 interface SuccessModalProps {
   isOpen: boolean;
@@ -34,7 +35,7 @@ export const SuccessModal = ({ isOpen, onClose }: SuccessModalProps) => {
           ×
         </button>
         <div className="success-modal__icon" aria-hidden="true">
-          ✓
+          <img className="success-modal__icon-image" src={successCheckIcon} alt="" />
         </div>
         <p className="success-modal__text">Изменения сохранены!</p>
       </div>
